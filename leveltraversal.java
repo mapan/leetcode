@@ -1,0 +1,78 @@
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        if(root==null) return result;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        ArrayList<Integer> singleLevel(Nodes);
+        int nodesNum = 1; 
+        while(!q.isEmpty()) {
+            int j = nodesNum; 
+            nodesNum = 0;
+            singleLevel = new ArrayList<Integer>();
+            for(int i=0;i<j;i++) {
+                TreeNode n = q.poll();
+                singleLevel.add(n.val);
+                if(n.left!=null) {
+                    q.add(n.left);
+                    nodesNum++;
+                }
+                if(n.right!=null) {
+                    q.add(n.right);
+                    nodesNum++;
+                }
+            }
+            result.add(singleLevel);
+        }
+        return result;
+		//############## bottom up #########
+		Collections.reverse(result);
+    }
+}
+
+
+public class Solution {
+    public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        if(root==null) return result;
+        Stack<TreeNode> s1 = new Stack<TreeNode>();
+        s1.add(root);
+        Stack<TreeNode> s2 = new Stack<TreeNode>();
+        ArrayList<Integer> singleLevel;
+        while(!s1.isEmpty() || !s2.isEmpty()) {
+            singleLevel = new ArrayList<Integer>();
+            while(!s1.isEmpty()) {
+                TreeNode node = s1.pop();
+                singleLevel.add(node.val);
+                if(node.left!=null) s2.add(node.left);
+                if(node.right!=null) s2.add(node.right);
+            }
+            if(!singleLevel.isEmpty())
+                result.add(singleLevel);
+                
+            singleLevel = new ArrayList<Integer>();
+            while(!s2.isEmpty()) {
+                TreeNode node = s2.pop();
+                singleLevel.add(node.val);
+                if(node.right!=null) s1.add(node.right);
+                if(node.left!=null) s1.add(node.left);
+            }
+            if(!singleLevel.isEmpty())
+                result.add(singleLevel);
+        }
+        return result;
+    }
+}
