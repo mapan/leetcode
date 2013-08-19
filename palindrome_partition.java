@@ -65,3 +65,8 @@ public ArrayList<ArrayList<String>> partitionHelper(String s, int start, boolean
     }
     return pa;
 }
+
+
+http://www.geeksforgeeks.org/dynamic-programming-set-17-palindrome-partitioning/
+http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/
+http://www.geeksforgeeks.org/dynamic-programming-set-1/
