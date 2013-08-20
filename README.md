@@ -1,3 +1,3 @@
 leetcode
 ========
-My solutions for leetcode online judege.
+solutions for leetcode online judege.
