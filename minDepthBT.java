@@ -1,3 +1,44 @@
+public class Solution {
+    public int minDepth(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(root==null) return 0;
+        return min(root,1);
+    }
+    public int min(TreeNode root,int depth) {
+        if(root==null) {
+            return Integer.MAX_VALUE;
+        }
+        if(root.left==null&&root.right==null)
+            return depth;
+        int left=min(root.left,depth+1);
+        int right=min(root.right,depth+1);
+        return left<right?left:right;
+    }
+}
+
+public class Solution {
+    public int minDepth(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        return min(root);
+    }
+    public int min(TreeNode root) {
+        if(root==null) {
+            return 0;
+        }
+        int left=min(root.left);
+        int right=min(root.right);
+        if(root.left==null) return right+1;
+        if(root.right==null) return left+1;
+        return Math.min(left,right)+1;
+    }
+}
+
+
+
+
+
 public int minDepth(TreeNode root) {
     if (root == null)
         return 0;
