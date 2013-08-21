@@ -29,11 +29,11 @@ public class Solution {
             result.add(1);
         }
         for(int row=1;row<=rowIndex;row++) {
-            int temp=result.get(0);
+            int previous=result.get(0);
             for(int column=1;column<row;column++) {
-                int previous=result.get(column);
-                result.set(column,temp+result.get(column));
-                temp=previous;
+                int current=result.get(column);
+                result.set(column,previous+current);
+                previous=current;
             }
         }
         return result;
