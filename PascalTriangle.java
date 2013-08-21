@@ -29,43 +29,14 @@ public class Solution {
             result.add(1);
         }
         for(int row=1;row<=rowIndex;row++) {
+            int temp=result.get(0);
             for(int column=1;column<row;column++) {
-                int a=column,result.get(column-1);
-                result.set(+result.get(column));
+                int previous=result.get(column);
+                result.set(column,temp+result.get(column));
+                temp=previous;
             }
         }
         return result;
     }
 }
 
-public class Solution {
-    public ArrayList<Integer> getRow(int rowIndex) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<ArrayList<Integer>> tri=new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> row=new ArrayList<Integer>();
-        if(rowIndex==0) {
-            row.add(1);
-            return row;
-        }
-        row.add(0,1);
-        for(int i=0;i<=rowIndex;i++) {
-            int previous=0;
-            for(int j=1;j<=i-1;j++) {
-                int val=0;
-                if(j==1) {
-                    val=tri.get(i-1).get(j-1)+tri.get(i-1).get(j);
-                    previous=val-1;
-                }
-                else {
-                    val=previous+tri.get(i-1).get(j);
-                    previous=val-previous;
-                }
-                row.set(j,val);
-            }
-            if(i!=0) row.add(i,1);
-            tri.add(row);
-        }
-        return tri.get(rowIndex);
-    }
-}
