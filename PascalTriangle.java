@@ -1,29 +1,41 @@
-import java.util.*;
-public class PascalTriangle {
-    public static ArrayList<ArrayList<Integer>> generate(int numRows) {
+public class Solution {
+    public ArrayList<ArrayList<Integer>> generate(int numRows) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        ArrayList<ArrayList<Integer>> tri=new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> row;
-        for(int i=0;i<numRows;i++) {
-            row=new ArrayList<Integer>(i+1);
-            row.add(0,1);
-            //if(i!=0) row.add(i,1); //make the size 1 out of bounds will add twice
-			//Shifts the element currently at that position (if any) 
-			//and any subsequent elements to the right (adds one to their indices).
-			// the list is empty and you cannot access a list position that doesn't exist..
-            for(int j=1;j<=i-1;j++) {
-                int val=tri.get(i-1).get(j-1)+tri.get(i-1).get(j);
-                row.add(j,val);
+        ArrayList<ArrayList<Integer>> result=new ArrayList<ArrayList<Integer>>();
+        if(numRows==0) return result;
+        ArrayList<Integer> single=new ArrayList<Integer>();
+        single.add(1);
+        result.add(single);
+        for(int row=1;row<numRows;row++) {
+            single=new ArrayList<Integer>();
+            single.add(1);
+            for(int column=1;column<row;column++) {
+                single.add(result.get(row-1).get(column-1)+result.get(row-1).get(column));
             }
-            if(i!=0) row.add(i,1);
-            tri.add(row);
+            single.add(1);
+            result.add(single);
         }
-        return tri;
+        return result;
     }
-	public static void main(String []args) {
-		generate(4);
-	}
+}
+
+public class Solution {
+    public ArrayList<Integer> getRow(int rowIndex) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        for (int i = 0; i < rowIndex+1; i++) {
+            result.add(1);
+        }
+        for(int row=1;row<=rowIndex;row++) {
+            for(int column=1;column<row;column++) {
+                int a=column,result.get(column-1);
+                result.set(+result.get(column));
+            }
+        }
+        return result;
+    }
 }
 
 public class Solution {
