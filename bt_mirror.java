@@ -35,5 +35,10 @@ private void mirror(Node node) {
   } 
 } 
 
-public Node mirror(Node root) {
+public Node mirror(Node root) { 
+ if(root==null) return null;
+ root.right=mirror(root.left);
+ root.left=mirror(root.right);
+ return root;
+}
 
