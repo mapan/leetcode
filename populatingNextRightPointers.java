@@ -10,21 +10,18 @@ public class Solution {
     public void connect(TreeLinkNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(root==null) return;
-        traverse(root);
+        c(root);
     }
-    public TreeLinkNode traverse(TreeLinkNode root) {
-        if(root==null) return null;
-        TreeLinkNode left,right;
-        left=traverse(root.left);
-        right=traverse(root.right);
-        if(left!=null) {
-            left.next=right;
-            while(left.right!=null) {
-                left.right.next=right.left;
-                left=left.right;
-                right=right.left;
-            }
+    public TreeLinkNode c(TreeLinkNode root) {
+        if(root==null||(root.left==null&&root.right==null)) 
+            return root;
+        TreeLinkNode l=c(root.left);
+        TreeLinkNode r=c(root.right);
+        l.next=r;
+        while(l.right!=null) {
+            l.right.next=r.left;
+            l=l.right;
+            r=r.left;
         }
         return root;
     }
