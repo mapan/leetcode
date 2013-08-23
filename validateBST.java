@@ -44,4 +44,23 @@ public class Solution {
     }
 }
 
+public class Solution {
+    int previous;
+    public boolean isValidBST(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        previous=Integer.MIN_VALUE;
+        return b(root);
+    }
+    public boolean b(TreeNode root) {
+        if(root==null) return true;
+        if(!b(root.left))
+            return false;
+        if(root.val<=previous)
+            return false;
+        previous=root.val;
+        return b(root.right);
+    }
+}
+
 http://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
