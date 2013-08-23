@@ -39,3 +39,41 @@ void connect(TreeLinkNode *root) {
     connect(root->left);
     connect(root->right);
 }
+
+
+ public void connect(TreeLinkNode root) {  
+   TreeLinkNode first = root;  
+   while (first != null) {  
+     TreeLinkNode cur = first;  
+     // set up next pointers for the next level  
+     while (cur != null) {  
+       if (cur.left != null) cur.left.next = cur.right;  
+       if (cur.right != null && cur.next != null) cur.right.next = cur.next.left;  
+       cur = cur.next;  
+     }  
+     // move to next level  
+     first = first.left;  
+   }  
+ }
+ 
+ 
+ // the link of level(i) is the queue of level(i+1)
+void connect(TreeLinkNode * n) {
+    while (n) {
+        TreeLinkNode * next = NULL; // the first node of next level
+        TreeLinkNode * prev = NULL; // previous node on the same level
+        for (; n; n=n->next) {
+            if (!next) next = n->left?n->left:n->right;
+
+            if (n->left) {
+                if (prev) prev->next = n->left;
+                prev = n->left;
+            }
+            if (n->right) {
+                if (prev) prev->next = n->right;
+                prev = n->right;
+            }
+        }
+        n = next; // turn to next level
+    }
+}
