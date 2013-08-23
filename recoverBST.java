@@ -19,6 +19,7 @@ public class Solution {
         int temp = t.get(0).val;
         t.get(0).val = t.get(t.size()-1).val;
         t.get(t.size()-1).val = temp;
+        //被换的恰好在头和尾
     }
     public void inorder(TreeNode root) {
         if(root==null) return;
