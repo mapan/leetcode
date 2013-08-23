@@ -25,7 +25,7 @@ public class Solution {
         if(root==null) return;
         inorder(root.left);
         if(previous!=null&&previous.val>root.val) {
-            if(!t.contains(previous)) t.add(previous);
+            if(!t.contains(previous)) t.add(previous); //no need contains
             if(!t.contains(root)) t.add(root);
         }
         previous = root;
