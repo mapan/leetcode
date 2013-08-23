@@ -26,3 +26,16 @@ public class Solution {
         return root;
     }
 }
+
+void connect(TreeLinkNode *root) {
+    // Start typing your C/C++ solution below
+    // DO NOT write int main() function
+    if (!root || (!root->left && !root->right))
+        return;
+    root->left->next = root->right;
+    if (root->next) 
+        root->right->next = root->next->left;
+
+    connect(root->left);
+    connect(root->right);
+}
