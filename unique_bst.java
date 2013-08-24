@@ -84,7 +84,6 @@ public class Solution {
             t.get(b).get(e).add(r);
             return;
         }
-        t.get(b).get(e).clear();
         for(int i=b;i<=e;i++) {
             dp(t,b,i-1);
             dp(t,i+1,e);
