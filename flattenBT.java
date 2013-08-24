@@ -1,24 +1,19 @@
-
 public class Solution {
     public void flatten(TreeNode root) {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(root==null) return;
-        build(root);
-    }
-    public TreeNode build(TreeNode root) {
-        if(root==null) return null;
-        TreeNode lefttail=build(root.left);
-        TreeNode righttail=build(root.right);
-        //if (left!=null) left.right = root.right;
-        if (root.left!=null) {
-            lefttail.right = root.right;
-            root.right = root.left;
-            root.left = null;
+        flatten(root.left);
+        flatten(root.right);
+        if(root.left!=null) {
+            TreeNode temp=root.right;
+            root.right=root.left;
+            root.left=null;
+            TreeNode rightmost=root.right;
+            while(rightmost.right!=null)
+                rightmost=rightmost.right;
+            rightmost.right=temp;
         }
-        if (righttail!=null) return righttail;
-        if (lefttail!=null) return lefttail;
-        return root;
     }
 }
 
