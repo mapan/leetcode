@@ -3,42 +3,60 @@ public class Num {
     public static int numTrees(int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        if(num==null) num = new int[n+1]; int numKeys=n;
+        if(num==null) num = new int[n+1]; 
+        int numKeys=n;
         if (numKeys <=1) { 
     		return(1); 
-  		} 
-  else if(num[n]!=0) return num[n];
-  else { 
-    // there will be one value at the root, with whatever remains 
-    // on the left and right each forming their own subtrees. 
-    // Iterate through all the values that could be the root... 
-    int sum = 0; 
-    int left, right, root;
+  	} 
+  	else if(num[n]!=0) return num[n];
+  	else { 
+	    // there will be one value at the root, with whatever remains 
+	    // on the left and right each forming their own subtrees. 
+	    // Iterate through all the values that could be the root... 
+	    int sum = 0; 
+	    int left, right, root;
+	
+	    for (root=1; root<=numKeys; root++) { 
+	      left = numTrees(root-1); 
+	      num[root-1]=left;
+	      right = numTrees(numKeys - root);
+	      num[numKeys-root]=right;
+	
+	      // number of possible trees with this root == left*right 
+	      sum += left*right; 
+	    }
 
-    for (root=1; root<=numKeys; root++) { 
-      left = numTrees(root-1); 
-      num[root-1]=left;
-      right = numTrees(numKeys - root);
-      num[numKeys-root]=right;
-
-      // number of possible trees with this root == left*right 
-      sum += left*right; 
-    }
-
-    return(sum); 
-  } 
+    	return(sum); 
+  	} 
     }
     
+#########################################################################
     
-    /**
- * Definition for binary tree
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; left = null; right = null; }
- * }
- */
+public ArrayList<TreeNode> generateTrees(int n) {  
+   return genSubTrees(1, n);  
+ } 
+private ArrayList<TreeNode> genSubTrees(int l, int r) {  
+   ArrayList<TreeNode> trees = new ArrayList<TreeNode>();  
+   if (l > r) { // return an empty tree 
+     trees.add(null);  
+   } else {  
+     for (int i=l; i<=r; ++i) {  
+       ArrayList<TreeNode> lefts = genSubTrees(l, i-1);  
+       ArrayList<TreeNode> rights = genSubTrees(i+1, r);  
+       for (TreeNode left : lefts) {  
+         for (TreeNode right : rights) {  
+           TreeNode root = new TreeNode(i);  
+           root.left = left;  
+           root.right = right;  
+           trees.add(root);  
+         }  
+       }  
+     }  
+   }  
+   return trees;  
+ }  
+    
+   
 public class Solution {
     public ArrayList<TreeNode> generateTrees(int n) {
         // Start typing your Java solution below
@@ -82,6 +100,45 @@ public class Solution {
     }
 }
     
+   
+class Solution {
+public:
+    vector<TreeNode *> generateTrees(int n) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        vector<vector<vector<TreeNode*>>> table(n+2, vector<vector<TreeNode*>>(n+2, vector<TreeNode*>(0,nullptr)));
+        dp(table, 1, n);
+        return table[1][n];
+    }
+private:
+    void dp(vector<vector<vector<TreeNode*>>> &table, int begin, int end) {
+        if (table[begin][end].size()!=0) return;
+
+        if (begin>end) {
+            table[begin][end] = vector<TreeNode*>(1,nullptr);
+            return;
+        }
+        if (begin==end) {
+            TreeNode * root = new TreeNode(begin);
+            table[begin][end] = vector<TreeNode*>(1, root);
+            return;
+        }
+
+        for (int i=begin; i<=end; ++i) {
+            dp(table, begin, i-1);
+            dp(table, i+1, end);
+            for (auto iter_l=table[begin][i-1].begin(); iter_l!=table[begin][i-1].end(); ++iter_l) {
+                for (auto iter_r=table[i+1][end].begin(); iter_r!=table[i+1][end].end(); ++iter_r) {
+                    TreeNode *root = new TreeNode(i);
+                    root->left = *iter_l;
+                    root->right = *iter_r;
+                    table[begin][end].push_back(root);
+                }
+            }
+        }
+    }
+};
+   
     
 	public static void main(String[] args) {
 		System.out.println(numTrees(3));
