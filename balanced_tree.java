@@ -20,9 +20,10 @@ public class Solution {
         if(root == null) return -1;
         int left = traverse(root.left);
         int right = traverse(root.right);
-        if(left-right>1 || right-left>1 || left==-10 || right==-10)
+        if(Math.abs(left-right) || left==-10 || right==-10)
             return -10;
         int h = left>right ? left:right;
         return h+1;
+        return Math.max(left,right)+1;
     }
 }
