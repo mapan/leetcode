@@ -41,6 +41,29 @@ public class Solution {
     }
 }
 
+int nodesNum = 0; 
+        int j = 1;
+        while(!q.isEmpty()) {
+            TreeNode n = q.poll();
+            j--;                
+            singleLevel.add(n.val);
+           
+            if(n.left!=null) {
+                q.add(n.left);
+                nodesNum++;
+            }
+            if(n.right!=null) {
+                q.add(n.right);
+                nodesNum++;
+            }
+             if(j==0) {
+                result.add(singleLevel);
+                singleLevel = new ArrayList<Integer>();
+                j=nodesNum;
+                nodesNum=0;
+            }
+        }
+
 
 public class Solution {
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
