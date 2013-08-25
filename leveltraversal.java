@@ -64,6 +64,28 @@ int nodesNum = 0;
             }
         }
 
+vector<vector<int> > levelOrderBottom(TreeNode *root) {
+    // Start typing your C/C++ solution below
+    // DO NOT write int main() function
+    vector<vector<int>> result;
+    traverse(root, 1, result);
+    std::reverse(result.begin(), result.end());
+    return result;
+}
+
+void traverse(TreeNode *root, int level, vector<vector<int>> &result) {
+
+    if (!root)
+        return;
+
+    if (level > result.size()) {
+        vector<int> temp;
+        result.push_back(temp);
+    }
+    result[level-1].push_back(root->val);
+    traverse(root->left, level+1, result);
+    traverse(root->right, level+1, result);
+}
 
 public class Solution {
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
