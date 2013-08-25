@@ -23,7 +23,7 @@ public class Solution {
         return root;
     }
 }
-
+http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
 public class Solution {
     public static ListNode head2;
     public TreeNode sortedListToBST(ListNode head) {
