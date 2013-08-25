@@ -97,7 +97,7 @@ public class Solution {
         s1.add(root);
         Stack<TreeNode> s2 = new Stack<TreeNode>();
         ArrayList<Integer> singleLevel;
-        while(!s1.isEmpty() || !s2.isEmpty()) {
+        while(!s1.isEmpty()) //|| !s2.isEmpty()) {
             singleLevel = new ArrayList<Integer>();
             while(!s1.isEmpty()) {
                 TreeNode node = s1.pop();
