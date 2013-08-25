@@ -24,6 +24,7 @@ public class Solution {
     }
 }
 http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
+http://leetcode.com/2010/11/convert-binary-search-tree-bst-to.html#comment-72591
 public class Solution {
     public static ListNode head2;
     public TreeNode sortedListToBST(ListNode head) {
