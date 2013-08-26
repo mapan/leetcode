@@ -32,7 +32,7 @@ string resultIp, vector<string>& col)
         }   
         if(num ==0)
         {
-            break;
+            break;   //"0.1.0.010","0.1.00.10","0.1.001.0","0.10.0.10","0.10.01.0"
         }
     }
 }
