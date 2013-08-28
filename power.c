@@ -75,3 +75,73 @@ void permute(string soFar, string rest) {
 int main() {
 	permute("","()()()");
 }
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Phone {
+	static char c[][] = {{'a','b','c'},{'d','e','f'},{'A','B','C'}};
+	public static char getChar(int digit, int index) {
+		return c[digit][index];
+	}
+	public static void charCombination(String soFar, int[] number, int index) {
+		if(index == number.length) {
+			System.out.println(soFar);
+		}
+		else {
+			for(int i = 0;i < 3;i++) {
+				String next = soFar+getChar(number[index],i);
+				charCombination(next, number, index+1);
+			}
+		}
+	}
+	
+	public static void gcd(int a,int b) {
+		if(b == 0) 
+			System.out.println(a);
+		else
+			gcd(b,a%b);
+	}
+	
+	public static void replace(String s) {
+		StringBuilder builder = new StringBuilder();
+		for(int i = 0;i < s.length();i++) {
+			if(s.charAt(i) == ' ')
+				builder.append("%20");
+			else
+				builder.append(s.charAt(i));
+		}
+		int[][] a = new int[2][3];
+		System.out.println(a[0].length);
+		System.out.println(builder.toString());
+	}
+	
+	public static void power(int a,int b) {
+		int binaryBit = 1;
+		int result = 1;
+		int c = a;
+		while(binaryBit <= b) {
+			if((binaryBit&b) != 0) { 
+				result *= c;
+			}
+			binaryBit *= 2;
+			c *= c;
+		}
+		System.out.println(result);
+	}
+	
+	public static void main(String args[]) {
+		int[] num = {0,1,2};
+		//charCombination("",num,0);
+		//gcd(15,4);
+		//replace("asdfds dsfds dsfdsf");
+		//power(2,7);
+		//char a = 'b';a=a+1;
+		String a = ""; a += (char)('c'+1);
+		System.out.println(a);
+	}
+}
+
+
