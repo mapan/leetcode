@@ -66,30 +66,21 @@ public class Solution {
     }
 }
 
+ public int uniquePaths(int m, int n) {  
+   if (m == 0 || n == 0) return 0;  
+   int x = Math.max(m, n), y = Math.min(m, n);  
+   int[] row = new int[y];  
+   
+   row[0] = 1;  
+   
+   // fill up the table  
+   for (int i=0; i<x; ++i) {  
+     for (int j=1; j<y; ++j) {  
+       row[j] += row[j-1];  
+     }  
+   }  
+   
+   return row[y-1];  
+ } 
 
-int m=obstacleGrid.length;
-        int n=obstacleGrid[0].length;
-        /*int min=Math.min(m,n);
-        int[] num=new int[min+1];
-        for(int i=1;i<=m;i++) {
-            for(int j=1;j<=n;j++) {
-                if(i==1||j==1) 
-                    if(obstacleGrid
-                    num[j]=1;
-                else
-                    num[j]+=num[j-1];
-            }
-        }
-        return num[n];*/
-        int[][] num=new int[m+1][n+1];
-        for(int i=1;i<=m;i++) {
-            for(int j=1;j<=n;j++) {
-                if(i==1||j==1)
-                    if(obstacleGrid[i][j]==0)
-                        num[i][j]=1;
-                else
-                    if(obstacleGrid[i][j]!=1)
-                        num[i][j]=num[i-1][j]+num[i][j-1];
-            }
-        }
-        return num[m][n];
+if(m<=0||n<=0||obstacleGrid[m-1][n-1]==1) return 0;
