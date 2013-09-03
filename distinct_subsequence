@@ -1,1 +1,38 @@
 http://discuss.leetcode.com/questions/281/distinct-subsequences
+
+public class Solution {
+    public int numDistinct(String S, String T) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(S.length()<T.length()) return 0;
+        int s=S.length(),t=T.length();
+        int[][] num=new int[s+1][t+1];
+        num[0][0]=1;
+        for(int i=1;i<=s;i++) {
+            for(int j=1;j<=t;j++) {
+                num[i][j]=num[i-1][j];
+                if(S.charAt(i-1)==T.charAt(j-1))
+                    num[i][j]+=(j==1?1:num[i-1][j-1]);
+            }
+        }
+        return num[s][t];
+    }
+}
+
+public class Solution {
+    public int numDistinct(String S, String T) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(S.length()<T.length()) return 0;
+        int s=S.length(),t=T.length();
+        int m=Math.max(s,t),n=Math.min(s,t);
+        int[] num=new int[n];
+        for(int i=0;i<m;i++) {
+            for(int j=n-1;j>=0;j--) {
+                if(S.charAt(i)==T.charAt(j))
+                    num[j]+=j==0?1:num[j-1];
+            }
+        }
+        return num[n-1];
+    }
+}
