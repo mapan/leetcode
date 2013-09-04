@@ -11,7 +11,7 @@ public class Solution {
         if(rest.length()>empty*3||rest.equals("")) return;
         if(empty==1) { 
             if(isValid(rest))
-		          result.add(current+rest);
+		result.add(current+rest);
             return;
         }
         for(int i=1;i<=Math.min(rest.length(),3);i++) {
