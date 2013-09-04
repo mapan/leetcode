@@ -8,7 +8,7 @@ public class Solution {
         return result;
     }
     public void build(String current,String rest,int empty) {
-        if(rest.length()>empty*3||rest.equals("")) return;
+        if(rest.length()>empty*3||rest.length()<empty||rest.equals("")) return;
         if(empty==1) { 
             if(isValid(rest))
 		result.add(current+rest);
