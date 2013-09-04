@@ -60,3 +60,41 @@ public class Solution {
         return false;
     }
 }
+
+
+
+public class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        for(int i=0;i<board.length;i++) {
+            for(int j=0;j<board[0].length;j++) {
+                if(!valid(board,i,j,board[i][j])) return false;
+            }
+        }
+        return true;
+    }
+    public boolean valid(char[][]board,int row,int col,char c) {
+        if(c=='.') return true;
+        for(int i=0;i<board[row].length;i++)
+            if(i!=col&&board[row][i]==c)
+                return false;
+        for(int i=0;i<board.length;i++) 
+            if(i!=row&&board[i][col]==c)
+                return false;
+        int i=0,j=0;
+        if(row<3) i=0;
+        else if(row<6) i=3;
+        else if(row<9) i=6;
+        if(col<3) j=0;
+        else if(col<6) j=3;
+        else if(col<9) j=6;
+        for(int m=i;m<i+3;m++) {
+            for(int n=j;n<j+3;n++) {
+                if(m!=row&&n!=col&&board[m][n]==c)
+                    return false;
+            }
+        }
+        return true;
+    }
+}
