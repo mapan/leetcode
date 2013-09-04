@@ -49,10 +49,11 @@ public class Solution {
                 if(pos.get(r).size()==ind) {
                     r++;ind=0;
                 }
-		        if(r==pos.size()) 
+		if(r==pos.size()) 
                     return true; // last empty cell is filled so return true. empty is useless
                 int c=pos.get(r).get(ind);
-                if(solve(board,r,c,empty-1,ind+1)) return true;
+                if(solve(board,r,c,empty-1,ind+1))
+                    return true;
                 board[row][col]='.';
             }
         }
