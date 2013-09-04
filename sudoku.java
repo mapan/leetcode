@@ -91,7 +91,7 @@ public class Solution {
         else if(col<9) j=6;
         for(int m=i;m<i+3;m++) {
             for(int n=j;n<j+3;n++) {
-                if(m!=row&&n!=col&&board[m][n]==c)
+                if(!(m==row&&n==col)&&board[m][n]==c)
                     return false;
             }
         }
