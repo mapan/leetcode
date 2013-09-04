@@ -16,8 +16,8 @@ public class Solution {
         }
         for(int i=1;i<=Math.min(rest.length(),3);i++) {
             String c=current;
-	          if(!isValid(rest.substring(0,i))) continue;
-	          c+=rest.substring(0,i)+".";
+	    if(!isValid(rest.substring(0,i))) continue;
+	    c+=rest.substring(0,i)+".";
             String r=rest.substring(i);   // do not modify func params 'current' and 'rest' cause backtracking
             build(c,r,empty-1);
         }
