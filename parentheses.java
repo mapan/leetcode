@@ -20,6 +20,7 @@ public class Solution {
             if(!left.contains(l)) return false;  if(left.size()==0) return false;
             if(left.get(left.size()-1)!=l) return false;
             // the last element of the list must match current one
+            // use Stackk!
             left.remove(left.size()-1); // remove(object) the first appearance
         }
         return valid(s.substring(1));
