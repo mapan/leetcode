@@ -25,3 +25,5 @@ public class Solution {
         return valid(s.substring(1));
     }
 }
+
+http://n00tc0d3r.blogspot.com/2013/04/longest-valid-parentheses.html
