@@ -11,16 +11,14 @@ public class Solution {
             return false;
         
         String ss="",pp="";
+        int j=0;
+        while(p.charAt(j)=='*') j++;
         if(p.charAt(0)=='*') {
             int i;
-            for(i=0;i<s.length();i++ {
-                if(i>=2) 
-                    if(s.charAt(i-1)!=s.charAt(i-2))
-                        break;
-                if(isMatch(s.substring(i),p.substring(1))) return true;
+            for(i=0;i<=s.length();i++) {
+                if(isMatch(s.substring(i),p.substring(j))) return true;
             }
-            ss=s.substring(i-1);
-            pp=p.substring(1);
+            return false;
         }
         else {
             if(p.charAt(0)!='?')
