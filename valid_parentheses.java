@@ -19,6 +19,7 @@ public class Solution {
             else if(c=='}') l='{';
             if(!left.contains(l)) return false;
             if(left.get(left.size()-1)!=l) return false;
+            // the last element of the list must match current one
             left.remove(left.size()-1); // remove(object) the first appearance
         }
         return valid(s.substring(1));
