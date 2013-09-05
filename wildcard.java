@@ -12,24 +12,20 @@ public class Solution {
         
         String ss="",pp="";
         if(p.charAt(0)=='*') {
-            int i=0;
-            while(i+1<s.length()) {
-                if(s.charAt(i)==s.charAt(i+1))
-                    i++;
-                else 
-                    break;
+            int i;
+            for(i=0;i<s.length();i++ {
+                if(i>=2) 
+                    if(s.charAt(i-1)!=s.charAt(i-2))
+                        break;
+                if(isMatch(s.substring(i),p.substring(1))) return true;
             }
-            if(isMatch(s,p.substring(1)) return true;
-            ss=s.substring(i+1);
-            pp=p.substring(1);
-        }
-        else if(p.charAt(0)=='?') {
-            ss=s.substring(1);
+            ss=s.substring(i-1);
             pp=p.substring(1);
         }
         else {
-            if(s.charAt(0)!=p.charAt(0))
-                return false;
+            if(p.charAt(0)!='?')
+                if(s.charAt(0)!=p.charAt(0))
+                    return false;
             ss=s.substring(1);
             pp=p.substring(1);
         }
