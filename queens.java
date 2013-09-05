@@ -36,8 +36,8 @@ public class Solution {
     }
     
     public boolean isValid(char[][] c,int row,int col) {
-        for(int i=0;i<c[row].length;i++) 
-            if(c[row][i]=='Q') return false;
+        //for(int i=0;i<c[row].length;i++) 
+          //  if(c[row][i]=='Q') return false;
         for(int i=0;i<c.length;i++) 
             if(c[i][col]=='Q') return false;
         int i=row-1,j=col-1;
