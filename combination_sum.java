@@ -25,7 +25,6 @@ public class Solution {
     }
 }
 
-
 public class Solution {
     ArrayList<ArrayList<Integer>> r;
     ArrayList<Integer> d;
@@ -39,19 +38,18 @@ public class Solution {
         c(candidates,target,sofar,0);
         return r;
     }
-    public void c(int[] cand,int target,ArrayList<Integer> sofar,int pre) {
+    public void c(int[] cand,int target,ArrayList<Integer> sofar,int ind) {
         if(target==0) {
             ArrayList<Integer> cp=new ArrayList<Integer>(sofar);
             r.add(cp);
             return;
         }
         if(target<cand[0]) return;
-        for(int i=0;i<cand.length;i++) {
-            if(cand[i]<pre||d.contains(cand[i])) continue;
-            if (i>start && candidates[i] == candidates[i-1]) continue;
+        for(int i=ind;i<cand.length;i++) {
+            if (i>ind && cand[i] == cand[i-1]) continue;
             sofar.add(cand[i]);
             d.add(cand[i]);
-            c(cand,target-cand[i],sofar,cand[i]);
+            c(cand,target-cand[i],sofar,i+1);
             sofar.remove(sofar.size()-1);
             //d.remove(cand[i]);
             //d.remove((Integer)cand[i]);
@@ -59,3 +57,6 @@ public class Solution {
         }
     }
 }
+
+
+
