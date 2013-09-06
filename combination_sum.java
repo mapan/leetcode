@@ -17,8 +17,9 @@ public class Solution {
         }
         if(target<cand[0]) return; // save time
         for(int i=0;i<cand.length;i++) {
+             // i=pre  pass the index each time so that will be larger than previous all the time
             if(cand[i]<pre) continue;
-            sofar.add(cand[i]);
+            sofar.add(cand[i]);         // i
             c(cand,target-cand[i],sofar,cand[i]);
             sofar.remove(sofar.size()-1);
         }
