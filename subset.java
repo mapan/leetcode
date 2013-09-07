@@ -46,7 +46,7 @@ public class Solution {
         if(sofar.contains(S[ind])) {
             sofar.add(S[ind]);
             s(S,ind+1,sofar);
-            sofar.remove(sofar.size()-1);
+            sofar.remove(sofar.size()-1); // still need remove previous one!!!!
         }
         else {
             sofar.add(S[ind]);
