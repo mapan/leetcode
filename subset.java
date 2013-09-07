@@ -47,6 +47,8 @@ public class Solution {
             sofar.add(S[ind]);
             s(S,ind+1,sofar);
             sofar.remove(sofar.size()-1); // still need remove previous one!!!!
+                    // any time change the data structure before a recursive call, 
+                    // when it returns back, must need change it back!!
         }
         else {
             sofar.add(S[ind]);
