@@ -3,8 +3,8 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(haystack.length()==0||needle.length()==0) {
-            if(haystack.length()==0) return null;
-            if(needle.length()==0) return haystack;
+            if(haystack.length()!=0) return haystack;
+            if(needle.length()!=0) return null;
             return "";
         }
         for(int i=0;i<=haystack.length()-needle.length();i++) {
