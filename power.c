@@ -1,3 +1,21 @@
+public class Solution {
+    public double pow(double x, int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        double r=1,s=x;
+        long p=1;
+        int pw=Math.abs(n);
+        while(p<=pw) {
+            if((pw&p)!=0) r*=s;
+            p<<=1;
+            s*=s;
+        }
+        return n<0?1/r:r;
+    }
+}
+
+
+
 #include <stdio.h>
 
 int power(int a, int b) {
