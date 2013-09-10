@@ -3,6 +3,32 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         ArrayList<String> r=new ArrayList<String>();
+        HashMap<String,ArrayList<Integer>> h=new HashMap<String,ArrayList<Integer>>();
+        for(int i=0;i<strs.length;i++) {
+            char[] c=strs[i].toCharArray();
+            Arrays.sort(c);
+            String s=new String(c);
+            if(!h.containsKey(s)) {
+                h.put(s,new ArrayList<Integer>());
+            }
+            h.get(s).add(i);
+        }
+        for(ArrayList<Integer> a:h.values()) {
+            if(a.size()>1) {
+                for(int i:a)
+                    r.add(strs[i]);
+            }
+        }
+        return r;
+    }
+}
+
+
+public class Solution {
+    public ArrayList<String> anagrams(String[] strs) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<String> r=new ArrayList<String>();
         HashMap<String,Integer> h=new HashMap<String,Integer>();
         HashSet<String> h2=new HashSet<String>();
         for(int i=0;i<strs.length;i++) {
