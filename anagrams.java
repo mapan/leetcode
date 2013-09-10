@@ -1,3 +1,29 @@
+public class Solution {
+    public ArrayList<String> anagrams(String[] strs) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        ArrayList<String> r=new ArrayList<String>();
+        HashMap<String,Integer> h=new HashMap<String,Integer>();
+        HashSet<String> h2=new HashSet<String>();
+        for(int i=0;i<strs.length;i++) {
+            char[] c=strs[i].toCharArray();
+            Arrays.sort(c);
+            String s=new String(c);
+            if(h.containsKey(s)) {
+                r.add(strs[i]);
+                String a=strs[h.get(s)];
+                if(!h2.contains(a)) {
+                    r.add(a);
+                    h2.add(a);
+                }
+            }
+            else h.put(s,i);
+        }
+        return r;
+    }
+}
+
+
 import java.util.*; 
 public class Solution {
     
