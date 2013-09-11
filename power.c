@@ -14,6 +14,21 @@ public class Solution {
     }
 }
 
+public class Solution {
+    public int log(int x) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(x==1) return 1;
+        int c=0;
+        long p=1;
+        while(p<=x) {
+            c++;
+            p<<=1;
+        }
+        return c-1;
+    }
+}
+
 
 
 #include <stdio.h>
