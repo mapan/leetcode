@@ -84,3 +84,33 @@ public class Solution {
  } 
 
 if(m<=0||n<=0||obstacleGrid[m-1][n-1]==1) return 0;
+
+
+public class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        int x=obstacleGrid.length,y=obstacleGrid[0].length;
+        if (x == 0 || y == 0) return 0;  
+       //int x = Math.max(m, n), y = Math.min(m, n);  
+       int[] row = new int[y];  
+       
+       for(int i=0;i<y;i++) {
+           if(obstacleGrid[0][i]==1) {
+               row[i]=0; break;
+           }
+           else row[i]=1;
+       }
+       
+       // fill up the table  
+       for (int i=1; i<x; ++i) {  
+         for (int j=0; j<y; ++j) {  
+            if(obstacleGrid[i][j]==1) row[j]=0;
+            else if(j==0) row[j]&=1;
+            else row[j] += row[j-1];  
+         }  
+       }  
+       
+       return row[y-1];  
+    }
+}
