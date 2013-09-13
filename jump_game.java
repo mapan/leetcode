@@ -56,6 +56,27 @@ public class Solution {
    return (next == 0);  
  } 
  
+ 
+ public class Solution {
+    public int jump(int[] A) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        int des=A.length-1;
+        int[] j=new int[A.length];
+        for(int i=A.length-2;i>=0;i--) {
+            if(i+A[i]>=des) j[i]=1;
+            else {
+                int min=Integer.MAX_VALUE;
+                for(int m=1;m<=A[i];m++)
+                    min=Math.min(min,j[i+m]);
+                j[i]=(min==Integer.MAX_VALUE)?min:min+1;
+            }
+        }
+        return j[0];
+    }
+}
+ 
+ 
  public class Solution {
     public int jump(int[] A) {
         // Start typing your Java solution below
