@@ -7,7 +7,7 @@ public class Solution {
         for(int i=0;i<l;) {
             char c=s.charAt(i);
             if(h.containsKey(c)) {
-                i=h.get(c)+1;
+                i=h.get(c)+1;  // we should restart and clear the hash map before the repeated c
                 h.clear();
                 len=0;
             }
