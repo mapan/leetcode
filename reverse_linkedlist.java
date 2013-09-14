@@ -1,3 +1,41 @@
+public class Solution {
+    ListNode h;
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        h=null;
+        int i=1;
+        ListNode d=new ListNode(1);
+        d.next=head;
+        ListNode pre=d,cur=head;
+        while(i!=m&&cur!=null) {
+            pre=cur;
+            cur=cur.next;
+            i++;
+        }
+        int j=i;
+        ListNode next=cur,p=null;
+        while(j!=n&&next!=null) {
+            next=next.next;
+            j++;
+        }
+        p=next;
+        next=next.next;
+        p.next=null;
+        reverse(cur,null);
+        pre.next=h;
+        cur.next=next;
+        return d.next;
+    }
+    public void reverse(ListNode node,ListNode pre) {
+        if(node==null) return;
+        reverse(node.next,node);
+        node.next=pre;
+        if(h==null) h=node;
+    }
+}
+
+
 ListNode previous=null;
     public ListNode reverse(ListNode p) {
         if(p==null) return null;
