@@ -8,6 +8,7 @@ public class Solution {
         ListNode d=new ListNode(1);
         d.next=head;
         ListNode pre=d,cur=head;
+        // find the head
         while(i!=m&&cur!=null) {
             pre=cur;
             cur=cur.next;
@@ -15,13 +16,14 @@ public class Solution {
         }
         int j=i;
         ListNode next=cur,p=null;
+        // find the tail
         while(j!=n&&next!=null) {
             next=next.next;
             j++;
         }
         p=next;
         next=next.next;
-        p.next=null;
+        p.next=null; // make the tail null then call reverse
         reverse(cur,null);
         pre.next=h;
         cur.next=next;
