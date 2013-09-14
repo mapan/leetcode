@@ -2,6 +2,31 @@ public class Solution {
     public int lengthOfLongestSubstring(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
+        int l=s.length(),len=0,r=0;
+        HashMap<Character,Integer> h=new HashMap<Character,Integer>();
+        for(int i=0;i<l;) {
+            char c=s.charAt(i);
+            if(h.containsKey(c)) {
+                i=h.get(c)+1;
+                h.clear();
+                len=0;
+            }
+            else {
+                h.put(c,i);
+                len++;
+                r=Math.max(len,r);
+                i++;
+            }
+        }
+        return r;
+    }
+}
+
+
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
         if(s.length()<=1) return s.length();
         HashMap<Character,Integer> h=new HashMap<Character,Integer>();
         int curmax=0,max=0;
