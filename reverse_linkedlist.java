@@ -54,6 +54,42 @@ previous will be the new head
 http://leetcode.com/2010/04/reversing-linked-list-iteratively-and.html
 
 
+
+public class Solution {
+    ListNode h;
+    public ListNode reverseKGroup(ListNode head, int k) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(head==null) return null;
+        ListNode d=new ListNode(0);
+        d.next=head;
+        ListNode pre=d,s=head,e=head,next;
+        int i=1;
+        while(true) {
+            while(e!=null&&i<k) {
+                i++;
+                e=e.next;
+            }
+            if(e==null) return d.next;
+            next=e.next;
+            e.next=null;
+            reverse(s,next);
+            pre.next=e;
+            pre=s;
+            s=s.next;
+            e=s;
+            i=1;
+        }
+        //return d.next;
+    }
+    public void reverse(ListNode node,ListNode pre) {
+        if(node==null) return;
+        reverse(node.next,node);
+        node.next=pre;
+    }
+}
+
+
 public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         // Start typing your Java solution below
