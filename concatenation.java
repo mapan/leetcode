@@ -8,6 +8,7 @@ public class Solution {
         if(l1==0||l2==0) return r;
         int w=L[0].length();
         HashMap<String,Integer> h=new HashMap<String,Integer>(),h2;
+        //for(String s:L)
         for(int i=0;i<l2;i++) {
             if(!h.containsKey(L[i])) h.put(L[i],0);
             h.put(L[i],h.get(L[i])+1);
