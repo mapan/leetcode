@@ -13,7 +13,7 @@ public class Solution {
             if(!h.containsKey(L[i])) h.put(L[i],0);
             h.put(L[i],h.get(L[i])+1);
         }
-        for(int i=0;i<=l1-w;i++) {
+        for(int i=0;i<=l1-w*l2;i++) {
             h2=new HashMap<String,Integer>(h);
             int c=0;
             for(int j=i;j<=Math.min(i+w*l2-w,l1-w);) {
