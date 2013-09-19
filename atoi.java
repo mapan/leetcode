@@ -5,7 +5,7 @@ public class Solution {
         int i=0,j=str.length()-1;
         long result=0;
         boolean neg=false;
-        while(i<=j&&(str.charAt(i)<'0'||str.charAt(i)>'9')&&str.charAt(i)!='-'&&str.charAt(i)!='+') i++;
+        while(i<=j&&str.charAt(i)==' ') i++;
         if(i<=j&&str.charAt(i)=='-') {neg=true;i++;}
         if(i<=j&&str.charAt(i)=='+') i++;
         while(j>=0&&(str.charAt(j)<'0'||str.charAt(j)>'9')) j--;
