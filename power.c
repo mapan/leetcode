@@ -29,6 +29,13 @@ public class Solution {
     }
 }
 
+public static void gcd(int a,int b) {
+		if(b == 0) 
+			System.out.println(a);
+		else
+			gcd(b,a%b);
+	}
+	http://www.proofwiki.org/wiki/GCD_with_Remainder
 
 
 #include <stdio.h>
@@ -131,12 +138,7 @@ public class Phone {
 		}
 	}
 	
-	public static void gcd(int a,int b) {
-		if(b == 0) 
-			System.out.println(a);
-		else
-			gcd(b,a%b);
-	}
+	
 	
 	public static void replace(String s) {
 		StringBuilder builder = new StringBuilder();
