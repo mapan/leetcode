@@ -40,3 +40,14 @@ public class Solution {
        return results;  
     }
 }
+
+for (int i=0; i<intervals.size();) {  
+         cur=intervals.get(i);
+         int j=i+1;
+         while(j<intervals.size()&&cur.end>=intervals.get(j).start) {
+             cur.end=Math.max(cur.end,intervals.get(j).end);
+             intervals.remove(intervals.get(j));
+         }
+         i=j;
+       }  
+       return intervals;
