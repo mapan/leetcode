@@ -48,6 +48,28 @@ public class Profit {
 		*/
 	    }
 	}
+	
+	
+public class Solution {
+    public int maxProfit2(int[] prices) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(prices.length==0) return 0;
+        return m(prices,0,prices.length-1);
+    }
+    public int m(int[]p,int l,int h) {
+        if(l==h) return 0;
+        if(h-l==1) return Math.max(0,p[h]-p[l]);
+        int mid=l+(h-l)/2;
+        int max=Integer.MIN_VALUE,min=Integer.MAX_VALUE;
+        /*for(int i=l;i<=mid-1;i++)
+            min=Math.min(min,p[i]);
+        for(int i=mid+1;i<=h;i++)
+            max=Math.max(max,p[i]);*/
+        return m(p,l,mid-1)+m(p,mid+1,h)+Math.max(0,p[mid]-p[mid-1])+Math.max(0,p[mid+1]-p[mid]);
+    }
+}
+	
 	public int maxProfit(int[] prices) {
 	        // Start typing your Java solution below
 	        // DO NOT write main() function
