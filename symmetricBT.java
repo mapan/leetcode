@@ -1,12 +1,17 @@
-/**
- * Definition for binary tree
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+public class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(root==null) return true;
+        return s(root.left,root.right);
+    }
+    public boolean s(TreeNode p,TreeNode q) {
+        if(p==null) return q==null;
+        if(q==null) return false;
+        return p.val==q.val&&s(p.left,q.right)&&s(p.right,q.left);
+    }
+}
+
 public class Solution {
     List<Integer> value;
     public boolean isSymmetric(TreeNode root) {
