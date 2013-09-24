@@ -4,8 +4,8 @@ public class Solution {
         // DO NOT write main() function
         if(root==null) return false;
         if(root.left==null&&root.right==null) return sum==root.val;
-        if(hasPathSum(root.left,sum-root.val)) return true;
-        return hasPathSum(root.right,sum-root.val);
+        //if(hasPathSum(root.left,sum-root.val)) return true;
+        return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
     }
 }
 public class Solution {
