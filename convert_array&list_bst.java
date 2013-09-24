@@ -23,6 +23,29 @@ public class Solution {
         return root;
     }
 }
+public class Solution {
+    ListNode p;
+    public TreeNode sortedListToBST(ListNode head) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        p=head;
+        if(head==null) return null;
+        int len=0;
+        while(head!=null) {len++;head=head.next;}
+        return s(0,len-1);
+    }
+    public TreeNode s(int l,int h) {
+        if(l>h) return null;
+        int mid=l+(h-l)/2;
+        TreeNode left=s(l,mid-1);
+        TreeNode root=new TreeNode(p.val);
+        p=p.next;
+        root.left=left;
+        root.right=s(mid+1,h);
+        return root;
+    }
+}
+
 http://leetcode.com/2010/11/convert-sorted-list-to-balanced-binary.html
 http://leetcode.com/2010/11/convert-binary-search-tree-bst-to.html#comment-72591
 public class Solution {
