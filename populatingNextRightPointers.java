@@ -27,6 +27,38 @@ public class Solution {
     }
 }
 
+public class Solution {
+    public void connect(TreeLinkNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        if(root==null) return;
+        Queue<TreeLinkNode> q=new LinkedList<TreeLinkNode>();
+        q.add(root);
+        int num=1;
+        while(!q.isEmpty()) {
+            int i=num;
+            num=0;
+            TreeLinkNode pre=null;
+            while(i-->0) {
+                TreeLinkNode n=q.remove();
+                if(pre==null) pre=n;
+                else {
+                    pre.next=n;
+                    pre=n;
+                }
+                if(n.left!=null) {
+                    q.add(n.left);
+                    num++;
+                }
+                if(n.right!=null) {
+                    q.add(n.right);
+                    num++;
+                }
+            }
+        }
+    }
+}
+
 void connect(TreeLinkNode *root) {
     // Start typing your C/C++ solution below
     // DO NOT write int main() function
