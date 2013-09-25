@@ -29,7 +29,38 @@ public class Num {
     	return(sum); 
   	} 
     }
-    
+
+
+public class Solution {
+    public ArrayList<TreeNode> generateTrees(int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        return g(1,n);
+    }
+    public ArrayList<TreeNode> g(int s,int e) {
+        ArrayList<TreeNode> a=new ArrayList<TreeNode>();
+        if(s>e) {
+            a.add(null);
+            return a;
+        }
+        for(int i=s;i<=e;i++) {
+            //TreeNode root=new TreeNode(i);
+            ArrayList<TreeNode> left=g(s,i-1);
+            ArrayList<TreeNode> right=g(i+1,e);
+            for(TreeNode l:left) {
+                for(TreeNode r:right) {
+                    TreeNode root=new TreeNode(i); 
+                    // gotta create a new obj, otherwise will change the previous obj value
+                    root.left=l;
+                    root.right=r;
+                    a.add(root);
+                }
+            }
+        }
+        return a;
+    }
+}
+
 #########################################################################
     
 public ArrayList<TreeNode> generateTrees(int n) {  
