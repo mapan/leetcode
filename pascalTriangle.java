@@ -35,6 +35,9 @@ public class Solution {
                 result.set(column,previous+current);
                 previous=current;
             }
+            for(int column=row-1;column>=1;column--) {
+                result.set(column,result.get(column-1)+result.get(column));
+            }
         }
         return result;
     }
