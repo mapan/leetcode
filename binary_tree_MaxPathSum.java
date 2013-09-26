@@ -1,3 +1,25 @@
+public class Solution {
+    int max;
+    public int maxPathSum(TreeNode root) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        max=Integer.MIN_VALUE;
+        if(root==null) return 0;
+        m(root);
+        return max;
+    }
+    public int m(TreeNode root) {
+        if(root==null) return Integer.MIN_VALUE;//0;
+        int left=m(root.left);
+        int right=m(root.right);
+        int a=root.val+Math.max(0,left)+Math.max(0,right);
+        int b=Math.max(Math.max(left,right),a);
+        max=Math.max(b,max);
+        //return a;
+        return root.val+Math.max(Math.max(0,left),Math.max(0,right));
+    }
+}
+
 class Solution {
 public:
    int maxPathSum(TreeNode *root) {
