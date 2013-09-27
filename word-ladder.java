@@ -53,7 +53,8 @@ public class Solution {
             while(j-->0) {
                 Stack<String> f=q.remove();
                 String w=f.peek();
-                h.add(w);
+                h.add(w); // just prevent previous levels same words, otherwise will lost 
+                            // some solutions which have common intermidate word on same level
                 for(int m=0;m<w.length();m++) {
                     char[] c=w.toCharArray();
                     for(int i=0;i<26;i++) {
