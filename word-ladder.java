@@ -69,6 +69,10 @@ public class Solution {
                             }
                             Collections.reverse(s);
                             r.add(s);
+                            
+                            ArrayList<String> s=new ArrayList<String>(f);
+                            s.add(n);
+                            
                             found=true;
                         }
                         else if(!h.contains(n)&&dict.contains(n)) {
