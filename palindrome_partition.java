@@ -1,34 +1,78 @@
 public class Solution {
-    ArrayList<ArrayList<String>> all=new ArrayList<ArrayList<String>>();
-    
-    boolean isPalin(String s, int i, int j){
-        while(i<j){
-            if(s.charAt(i)!=s.charAt(j)) return false;
-            i++;
-            j--;
-        }    
-        return true;
+    ArrayList<ArrayList<String>> r;
+    HashMap<String,Boolean> h;
+    public ArrayList<ArrayList<String>> partition(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        r=new ArrayList<ArrayList<String>>();
+        h=new HashMap<String,Boolean>();
+        p(new ArrayList<String>(),s);
+        return r;
     }
-    
-    void dfs(String s, int start, ArrayList<String> al){
-        if(start==s.length()){
-            all.add(new ArrayList<String>(al));
+    public void p(ArrayList<String> sofar,String s) {
+        if(s.length()==0) {
+            ArrayList<String> cp=new ArrayList<String>(sofar);
+            r.add(cp);
             return;
         }
-        for(int i=start+1;i<=s.length();i++){
-            if(isPalin(s,start,i-1)){
-                al.add(s.substring(start,i));
-                dfs(s,i,al);
-                al.remove(al.size()-1);
+        for(int i=1;i<=s.length();i++) {
+            // i should <= to contain whole string
+            String a=s.substring(0,i);
+            if((h.containsKey(a)&&h.get(a))||ispal(a)) {
+                h.put(a,true);
+                sofar.add(a);
+                p(sofar,s.substring(i));
+                sofar.remove(sofar.size()-1);
             }
-        }    
+            else h.put(a,false);
+        }
     }
-    
-    public ArrayList<ArrayList<String>> partition(String s) {
-        all.clear();
-        ArrayList<String> al=new ArrayList<String>();
-        dfs(s,0,al);
-        return all;
+    public boolean ispal(String s) {
+        if(s.length()<=1) return true;
+        int l=0,r=s.length()-1;
+        while(l<r) {
+            if(s.charAt(l++)!=s.charAt(r--)) return false;
+        }
+        return true;
+    }
+}
+
+
+public class Solution {
+    HashMap<String,Boolean> h;
+    int min;
+    public int minCut(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        h=new HashMap<String,Boolean>();
+        if(s.length()==0) return 0;
+        min=s.length()-1;
+        p(0,s);
+        return min;
+    }
+    public void p(int cuts,String s) {
+        if(cuts-1>=min) return;
+        if(s.length()==0) {
+            min=Math.min(min,cuts-1);
+            return;
+        }
+        for(int i=1;i<=s.length();i++) {
+            // i should <= to contain whole string
+            String a=s.substring(0,i);
+            if((h.containsKey(a)&&h.get(a))||ispal(a)) {
+                h.put(a,true);
+                p(cuts+1,s.substring(i));
+            }
+            else h.put(a,false);
+        }
+    }
+    public boolean ispal(String s) {
+        if(s.length()<=1) return true;
+        int l=0,r=s.length()-1;
+        while(l<r) {
+            if(s.charAt(l++)!=s.charAt(r--)) return false;
+        }
+        return true;
     }
 }
 
