@@ -39,3 +39,19 @@ public class Solution {
         return cp;
     }
 }
+
+        h.put(node,cp);
+        while(!q1.isEmpty()) {
+            UndirectedGraphNode n1=q1.remove(),n2=q2.remove();
+            for(UndirectedGraphNode n:n1.neighbors) {
+                if(h.containsKey(n)) {
+                    n2.neighbors.add(h.get(n));
+                    continue;
+                }
+                q1.add(n);
+                UndirectedGraphNode child=new UndirectedGraphNode(n.label);
+                n2.neighbors.add(child);
+                q2.add(child);
+                h.put(n,child);
+            }
+        }
