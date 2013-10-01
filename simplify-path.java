@@ -2,6 +2,35 @@ public class Solution {
     public String simplifyPath(String path) {
         // Start typing your Java solution below
         // DO NOT write main() function
+        if(path.length()<=1) return path;
+        char[] p=path.toCharArray();
+        int current=0,start=0,end=1;
+        while(end<p.length) {
+            while(end<p.length&&p[end]!='/') end++; //p[end++]!='/'
+            if(end-start==3&&p[end-1]=='.'&&p[end-2]=='.') {
+                //if(current>0) {
+                //if(current>0) current--;
+                while(current>0&&p[--current]!='/');//current--;
+                start=end;
+                //}
+            }
+            else if(end-start==1||(end-start==2&&p[end-1]=='.')) {
+                start=end;
+                //end++;
+            }
+            else {
+                while(start<end) p[current++]=p[start++];
+            }
+            end++;
+        }
+        return new String(p,0,current==0?1:current);
+    }
+}
+
+public class Solution {
+    public String simplifyPath(String path) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
         int len=path.length();
         if(len<2) return path;
         StringBuilder s=new StringBuilder();
