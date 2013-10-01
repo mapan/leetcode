@@ -17,7 +17,7 @@ public class Solution {
         ArrayList<UndirectedGraphNode> pre=new ArrayList<UndirectedGraphNode>();
         q1.add(node);q2.add(cp);
         int i=0;
-        h.put(node,i++);
+        h.put(node,i++);  h.put(node,cp);
         pre.add(cp);
         while(!q1.isEmpty()) {
             UndirectedGraphNode n1=q1.remove(),n2=q2.remove();
