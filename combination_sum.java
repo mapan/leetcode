@@ -5,22 +5,20 @@ public class Solution {
         // DO NOT write main() function
         r=new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> sofar=new ArrayList<Integer>();
-        Arrays.sort(candidates);
+        //Arrays.sort(candidates);
         c(candidates,target,sofar,0);
         return r;
     }
-    public void c(int[] cand,int target,ArrayList<Integer> sofar,int pre) {
+    public void c(int[] cand,int target,ArrayList<Integer> sofar,int ind) {
         if(target==0) {
             ArrayList<Integer> cp=new ArrayList<Integer>(sofar);
             r.add(cp);
             return;
         }
-        if(target<cand[0]) return; // save time
-        for(int i=0;i<cand.length;i++) {
-             // i=pre  pass the index each time so that will be larger than previous all the time
-            if(cand[i]<pre) continue;
+        if(target<0) return; // save time
+        for(int i=ind;i<cand.length;i++) {
             sofar.add(cand[i]);         // i
-            c(cand,target-cand[i],sofar,cand[i]);
+            c(cand,target-cand[i],sofar,i);
             sofar.remove(sofar.size()-1);
         }
     }
