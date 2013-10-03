@@ -1,12 +1,3 @@
-/**
- * Definition for binary tree
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 public class Solution {
     public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
         // Start typing your Java solution below
@@ -38,6 +29,24 @@ public class Solution {
         return result;
 		//############## bottom up #########
 		Collections.reverse(result);
+    }
+}
+
+public class Solution {
+    ArrayList<ArrayList<Integer>> r;
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        r=new ArrayList<ArrayList<Integer>>();
+        if(root==null) return r;
+        dfs(root,0);
+        return r;
+    }
+    public void dfs(TreeNode root,int level) {
+        if(root==null) return;
+        if(level==r.size()) r.add(new ArrayList<Integer>());
+        r.get(level).add(root.val);
+        dfs(root.left,level+1);
+        dfs(root.right,level+1);
     }
 }
 
