@@ -3,17 +3,27 @@ public class Solution {
         // Start typing your Java solution below
         // DO NOT write main() function
         if(root==null) return 0;
-        return min(root,1);
-    }
-    public int min(TreeNode root,int depth) {
-        if(root==null) {
-            return Integer.MAX_VALUE;
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        int nodesNum = 1,level=0;
+        while(!q.isEmpty()) {
+            level++;
+            int j = nodesNum; 
+            nodesNum = 0;
+            for(int i=0;i<j;i++) {
+                TreeNode n = q.remove();
+                if(n.left==null&&n.right==null) return level;
+                if(n.left!=null) {
+                    q.add(n.left);
+                    nodesNum++;
+                }
+                if(n.right!=null) {
+                    q.add(n.right);
+                    nodesNum++;
+                }
+            }
         }
-        if(root.left==null&&root.right==null)
-            return depth;
-        int left=min(root.left,depth+1);
-        int right=min(root.right,depth+1);
-        return left<right?left:right;
+        return level;
     }
 }
 
