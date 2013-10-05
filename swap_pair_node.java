@@ -1,5 +1,5 @@
 ListNode pre=d,cur=head;
-        while(cur!=null&&cur.next!=null) {
+        while(cur!=null&&cur.next!=null) {  1,2  1,2,3
             pre.next=cur.next;
             cur.next=pre.next.next;
             pre.next.next=cur;
