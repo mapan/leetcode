@@ -1,9 +1,7 @@
 public class Solution {
-    ListNode h;
     public ListNode reverseBetween(ListNode head, int m, int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        h=null;
         int i=1;
         ListNode d=new ListNode(1);
         d.next=head;
@@ -15,28 +13,24 @@ public class Solution {
             i++;
         }
         int j=i;
-        ListNode next=cur,p=null;
+        ListNode next=cur;
         // find the tail
         while(j!=n&&next!=null) {
             next=next.next;
             j++;
         }
-        p=next;
-        next=next.next;
-        p.next=null; // make the tail null then call reverse
-        reverse(cur,null);
-        pre.next=h;
-        cur.next=next;
+        ListNode p=next.next;
+        next.next=null; // make the tail null then call reverse
+        reverse(cur,p);
+        pre.next=next;
         return d.next;
     }
     public void reverse(ListNode node,ListNode pre) {
         if(node==null) return;
         reverse(node.next,node);
         node.next=pre;
-        if(h==null) h=node;
     }
 }
-
 
 ListNode previous=null;
     public ListNode reverse(ListNode p) {
