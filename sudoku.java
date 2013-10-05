@@ -1,3 +1,36 @@
+    class Pair {
+        int row;
+        int col;
+        Pair(int r,int c) {row=r;col=c;}
+    }
+    ArrayList<Pair> pos;
+    public void solveSudoku(char[][] board) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        pos=new ArrayList<Pair>();
+        for(int i=0;i<board.length;i++) {
+            for(int j=0;j<board[0].length;j++) {
+                if(board[i][j]=='.') {
+                    pos.add(new Pair(i,j));
+                }
+            }
+        }
+        solve(board,0);
+    }
+    public boolean solve(char[][]board,int ind) {
+        if(ind==pos.size()) return true;
+        int row=pos.get(ind).row;
+        int col=pos.get(ind).col;
+        for(char i='1';i<='9';i++) {
+            if(valid(board,row,col,i)) {
+               board[row][col]=i;
+               if(solve(board,ind+1)) return true;
+               board[row][col]='.';
+            }
+        }
+        return false;
+    }
+
 public class Solution {
     ArrayList<ArrayList<Integer>> pos;
     public void solveSudoku(char[][] board) {
