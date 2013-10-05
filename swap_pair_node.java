@@ -1,4 +1,13 @@
-
+ListNode pre=d,cur=head;
+        while(cur!=null&&cur.next!=null) {
+            pre.next=cur.next;
+            cur.next=pre.next.next;
+            pre.next.next=cur;
+            pre=cur;
+            cur=cur.next; // cur might be null
+        }
+        return d.next;
+        
 public class Solution {
     public ListNode swapPairs(ListNode head) {
         // Start typing your Java solution below
