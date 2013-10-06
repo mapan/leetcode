@@ -41,19 +41,23 @@ public class Solution {
         ListNode dummy=new ListNode(0);
         dummy.next=head;
         ListNode pre=dummy,cur=head,next=head.next;
-        while(cur!=null) {
-            if(next!=null&&next.val==cur.val) {
+        while(next!=null) {
+            if(next.val==cur.val) {
                 while(next!=null&&next.val==cur.val) {
                     next=next.next;
                 }
+                if(next==null) {
+                    pre.next=null;
+                    return d.next;
+                }
                 pre.next=next;
                 cur=next;
-                if(next!=null) next=next.next;
+                next=next.next;
             }
             else {
                 pre=cur;
                 cur=next;
-                if(next!=null) next=next.next;
+                next=next.next;
             }
         }
         return dummy.next;
