@@ -1,3 +1,17 @@
+while(cur!=null) {
+            while(cur!=null&&cur.val==pre.val) {
+                cur=cur.next;
+            }
+            if(cur==null) {
+                pre.next=null;
+                return head;
+            }
+            else {
+                pre.next=cur;
+                pre=cur;
+                cur=cur.next;
+            }
+        }
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         // Start typing your Java solution below
