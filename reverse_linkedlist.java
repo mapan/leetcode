@@ -2,6 +2,27 @@ public class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
         // Start typing your Java solution below
         // DO NOT write main() function
+        if(head==null||m==n) return head;
+        int i=1;
+        ListNode d=new ListNode(1);d.next=head;
+        ListNode pre=d,start=head,end,p;
+        while(i++!=m) {pre=start;start=start.next;}
+        end=start.next; p=start;
+        while(i++<=n) {
+            ListNode next=end.next;
+            end.next=p;
+            p=end;
+            end=next;
+        }
+        pre.next.next=end;
+        pre.next=p;
+        return d.next;
+    }
+}
+public class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
         int i=1;
         ListNode d=new ListNode(1);
         d.next=head;
