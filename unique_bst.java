@@ -61,6 +61,21 @@ public class Solution {
     }
 }
 
+	for(int i=s;i<=e;i++) {
+            //TreeNode root=new TreeNode(i);
+            ArrayList<TreeNode> left=g(s+1,i);
+            ArrayList<TreeNode> right=g(i+1,e);
+            for(TreeNode l:left) {
+                for(TreeNode r:right) {
+                    TreeNode root=new TreeNode(s); 
+                    // gotta create a new obj, otherwise will change the previous obj value
+                    root.left=l;
+                    root.right=r;
+                    a.add(root);
+                }
+            }
+        }
+
 #########################################################################
     
 public ArrayList<TreeNode> generateTrees(int n) {  
