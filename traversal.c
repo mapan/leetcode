@@ -35,12 +35,35 @@ void InOrderPrint(NODE* pRoot)
             pCur = pCur->pRgt;
         else
         {
-            while (pCur->pParent != NULL && pCur != pCur->pParent->pLft)
+            while (pCur->pParent != NULL && pCur == pCur->pParent->right)
                 pCur = pCur->pParent;
  
             if (pCur->pParent == NULL) 
                 break;
             print(pCur->parent);
+            pCur = pCur->pParent->pRgt;
+        }
+    }
+}
+
+void postOrderPrint(NODE* pRoot)
+{
+    NODE* pCur = pRoot;
+    while (pCur != NULL)
+    {
+        if (pCur->pLft != NULL)
+            pCur = pCur->pLft;
+        else if (pCur->pRgt != NULL)
+            pCur = pCur->pRgt;
+        else
+        {
+            print(pCur);
+            while (pCur->pParent != NULL && pCur == pCur->pParent->right)
+                pCur = pCur->pParent;
+                print(pCur);
+ 
+            if (pCur->pParent == NULL) 
+                break;
             pCur = pCur->pParent->pRgt;
         }
     }
