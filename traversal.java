@@ -7,7 +7,7 @@ void pre(Node root) {
             root=root.right;
         else {
             Node p=root.parent;
-            while(p!=null&&root==p.right) {
+            while(p!=null&&(root==p.right||p.right==null)) {
                 root=p;
                 p=p.parent;
             }
@@ -26,7 +26,9 @@ void in(Node root) {
             root=root.right;
         else {
             Node p=root.parent;
-            while(p!=null&&root==p.right) {
+            while(p!=null&&(root==p.right||p.right==null)) {
+                if(p.right==null)
+                    print(p);
                 root=p;
                 p=p.parent;
             }
@@ -46,7 +48,7 @@ void post(Node root) {
         else {
             print(root);
             Node p=root.parent;
-            while(p!=null&&root==p.right) {
+            while(p!=null&&(root==p.right||p.right==null)) {
                 print(p);
                 root=p;
                 p=p.parent;
