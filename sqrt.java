@@ -5,11 +5,11 @@ public class Solution {
         if (x < 2) return x;
         int low = 1, high = x;
         while (low<=high) {
-        int mid = low + (high - low) / 2;
-        int div = x / mid;
-        if (mid == div) return mid;
-        if (mid < div) low = mid+1;
-        else high = mid-1;
+            int mid = low + (high - low) / 2;
+            int div = x / mid;
+            if (mid == div) return mid;
+            if (mid < div) low = mid+1;
+            else high = mid-1;
         }
         
         return high;
