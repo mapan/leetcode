@@ -107,6 +107,31 @@ public class Solution {
         }
         return true;
     }
+    
+    public boolean valid(char[][]board,int row,int col,char c) {
+        if(c=='.') return true;
+        for(int i=col+1;i<board[row].length;i++)
+            if(board[row][i]==c)
+                return false;
+        for(int i=row+1;i<board.length;i++) 
+            if(board[i][col]==c)
+                return false;
+        int i=0,j=0;
+        if(row<3) i=0;
+        else if(row<6) i=3;
+        else if(row<9) i=6;
+        if(col<3) j=0;
+        else if(col<6) j=3;
+        else if(col<9) j=6;
+        for(int m=row;m<i+3;m++) {
+            for(int n=(m==row?col+1:j);n<j+3;n++) {
+                if(board[m][n]==c)
+                    return false;
+            }
+        }
+        return true;
+    }
+    
     public boolean valid(char[][]board,int row,int col,char c) {
         if(c=='.') return true;
         for(int i=0;i<board[row].length;i++)
