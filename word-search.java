@@ -20,6 +20,19 @@ public class Solution {
         }
         return false;
     }
+    
+    public boolean find(char[][] b,String word,int row,int col) {
+        if(word.length()==0) return true;
+        if(row<0||row>=b.length||col<0||col>=b[0].length) return false;
+        if(bo[row][col]) return false;
+        if(word.charAt(0)!=b[row][col]) return false;
+        bo[row][col]=true;
+        if(find(b,word.substring(1),row+1,col)||find(b,word.substring(1),row-1,col)||find(b,word.substring(1),row,col+1)||find(b,word.substring(1),row,col-1)) return true;
+
+        bo[row][col]=false;
+        return false;
+    }
+    
     public boolean find(char[][] b,String word,int row,int col) {
         if(word.length()==0) return true;
         if(row<0||row>=b.length||col<0||col>=b[0].length) return false;
