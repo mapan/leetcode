@@ -60,7 +60,7 @@ public class Solution {
         return a;
     }
 }
-
+	// construct tree from pre order
 	for(int i=s;i<=e;i++) {
             ArrayList<TreeNode> left=g(s+1,i);
             ArrayList<TreeNode> right=g(i+1,e);
@@ -74,7 +74,7 @@ public class Solution {
                 }
             }
         }
-        
+        // construct tree from post order
         for(int i=e;i>=s;i--) {
             ArrayList<TreeNode> right=g(i,e-1);
             ArrayList<TreeNode> left=g(s,i-1);
