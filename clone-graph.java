@@ -1,3 +1,23 @@
+public class Solution {
+    HashMap<Integer, UndirectedGraphNode> map;
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if (node == null) 
+            return null;
+        map = new HashMap<Integer, UndirectedGraphNode>();
+        return clone(node);
+    }
+    public UndirectedGraphNode clone(UndirectedGraphNode node) {
+        if (map.containsKey(node.label)) 
+            return map.get(node.label);
+        UndirectedGraphNode c = new UndirectedGraphNode(node.label);
+        map.put(node.label, c);
+        for (UndirectedGraphNode n: node.neighbors) {
+            c.neighbors.add(clone(n));
+        }
+        return c;
+    }
+}
+
 /**
  * Definition for undirected graph.
  * class UndirectedGraphNode {
