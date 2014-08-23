@@ -114,7 +114,7 @@ public class Solution {
                 if(node.left!=null) s2.add(node.left);
                 if(node.right!=null) s2.add(node.right);
             }
-            if(!singleLevel.isEmpty())
+            //if(!singleLevel.isEmpty())
                 result.add(singleLevel);
                 
             singleLevel = new ArrayList<Integer>();
