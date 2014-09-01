@@ -57,8 +57,10 @@ public class Solution {
         }
         int left=min(root.left);
         int right=min(root.right);
-        if(root.left==null) return right+1;   // a node has only one child
-        if(root.right==null) return left+1;
+        //if(root.left==null) return right+1;   // a node has only one child
+        //if(root.right==null) return left+1;
+        if (root.left == null || root.right == null)
+            return root.left == null ? root.right + 1 : root.left + 1;
         return Math.min(left,right)+1;  // has two
     }
 }
