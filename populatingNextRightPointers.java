@@ -101,23 +101,3 @@ void connect(TreeLinkNode * n) {
         n = next; // turn to next level
     }
 }
-
-
- void connect(TreeLinkNode *n) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
-        while (n) {
-        TreeLinkNode * next = NULL; // the first node of next level
-        TreeLinkNode * prev = NULL; // previous node on the same level
-        for (; n; n=n->next) {
-            if (!next) next = n->left?n->left:n->right;
-
-            if (n->left) {
-                if (prev) prev->next = n->left;
-                n->left->next=n->right;
-                prev = n->right;
-            }
-        
-        }
-        n = next; // turn to next level
-    }
