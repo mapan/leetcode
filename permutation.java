@@ -28,6 +28,8 @@ public class Solution {
             if(f) continue;                         // could use arraylist to check previous used indexes
           
             if(h.containsKey(i)&&h.get(i)) continue;
+            if (hh.contains(num[i])) continue;
+            hh.add(num[i]);
             h.put(i,true);
             sofar.add(num[i]);
             p(sofar,num,ind+1);
