@@ -16,6 +16,7 @@ public class Solution {
             r.add(c);
             return;
         }
+        HashSet<Integer> hh = new HashSet<>();
         for(int i=0;i<num.length;i++) {
         
             boolean f=false;
