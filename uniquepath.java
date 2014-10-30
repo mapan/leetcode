@@ -95,22 +95,16 @@ public class Solution {
        //int x = Math.max(m, n), y = Math.min(m, n);  
        int[] row = new int[y];  
        
-       for(int i=0;i<y;i++) {
-           if(obstacleGrid[0][i]==1) {
-               row[i]=0; break;
-           }
-           else row[i]=1;
-       }
-       
        // fill up the table  
-       for (int i=1; i<x; ++i) {  
+       for (int i=0; i<x; ++i) {  
          for (int j=0; j<y; ++j) {  
             if(obstacleGrid[i][j]==1) row[j]=0;
-            else if(j==0) row[j]&=1;
-            else row[j] += row[j-1];  
+            else if(i==0&&j==0) row[j]=1;
+            else if(j > 0) row[j] += row[j-1];  
          }  
        }  
        
        return row[y-1];  
+    }
     }
 }
