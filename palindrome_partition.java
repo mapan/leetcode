@@ -109,7 +109,46 @@ public ArrayList<ArrayList<String>> partitionHelper(String s, int start, boolean
     }
     return pa;
 }
-
+public class Solution {
+    HashMap<String,ArrayList<ArrayList<String>>> h;
+    public ArrayList<ArrayList<String>> partition(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        h=new HashMap<>();
+        return p(s);
+    }
+    public ArrayList<ArrayList<String>> p(String s) {
+        ArrayList<ArrayList<String>> l = new ArrayList<ArrayList<String>>();
+        if (h.containsKey(s)) return h.get(s);
+        for (int i = 1; i <= s.length(); i++) {
+            String prefix = s.substring(0, i);
+            if (ispal(prefix)) {
+                ArrayList<String> list = new ArrayList<>();
+                ArrayList<ArrayList<String>> re = p(s.substring(i));
+                if (re.isEmpty()) {
+                    list.add(prefix);
+                    l.add(list);
+                }
+                for (ArrayList<String> l2 : re) {
+                    list = new ArrayList<>();
+                    list.add(prefix);
+                    list.addAll(l2);
+                    l.add(list);
+                }
+            }
+        }
+        h.put(s, l);
+        return l;
+    }
+    public boolean ispal(String s) {
+        if(s.length()<=1) return true;
+        int l=0,r=s.length()-1;
+        while(l<r) {
+            if(s.charAt(l++)!=s.charAt(r--)) return false;
+        }
+        return true;
+    }
+}
 
 http://www.geeksforgeeks.org/dynamic-programming-set-17-palindrome-partitioning/
 http://www.geeksforgeeks.org/dynamic-programming-set-8-matrix-chain-multiplication/
